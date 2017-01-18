@@ -1,0 +1,33 @@
+{layout name="layout" /}
+<div class="row up_ad text-center">
+	{if condition="$site['add_p'] eq 1"}
+		{$site['add_code']}
+	{/if}
+</div>
+<div class="row body" style="margin-top: 50px;">
+	<div class="col-md-8 col-md-offset-2 text-center" style="border-radius: 10px;padding: 40px;background: #FFFFFF">
+		<h3><a href="{$url}" id="url_value">{$url}</a></h3>
+		<p><h2><span id="time">5</span><small>秒后为您跳转......</small></h2></p>		
+	</div>
+</div>
+<div class="row down_ad text-center">
+	{if condition="$site['add_p'] eq 2"}
+		{$site['add_code']}
+	{/if}
+</div>
+
+<script type="text/javascript">
+	$("body").css("background-color","#F2F2F2");
+	var t=5;
+	setInterval("ref()",1000);
+	function ref(){
+		if(t>1){
+			t=t-1;
+			$("#time").html(t);
+		}else{
+			var url=$("#url_value").attr("href");
+			window.location.href=url;
+		}
+	}
+</script>
+
