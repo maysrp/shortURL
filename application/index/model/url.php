@@ -44,7 +44,7 @@
 				return false;
 			}
 		}
-		function short_key($short){//匹配
+		function short_key($short){//匹配 用short去匹配信息
 			$where['short']=$short;
 			$re=$this->where($where)->select();
 			if($re){
@@ -57,6 +57,7 @@
 			$noke=$this->short_key($info['short']);
 			if($noke){
 				$info_array=json_decode($noke['visitor'],true);
+				$info['time']=time();
 				$info_array[]=$info;
 				$noke['click']=$noke['click']+1;
 				$noke['visitor']=json_encode($info_array);
@@ -70,5 +71,17 @@
 			}
 			return $rex;
 		}
+		function ip_select($ip){//IP查询
+			$where['ip']=$ip;
+			$re_ip=$this->where($where)->select();
+			if($re_ip){
+				$re['status']=true;
+				$re['con']=$re_ip->data;
+			}else{
+				$re['status']=false;
+				$re['con']="无该IP信息";
+			}
+		}
+		
 
 	}

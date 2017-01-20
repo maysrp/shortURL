@@ -69,4 +69,22 @@
 				return $match[0];//禁止网站字符串
 			}
 		}
+		function f_ip($ip){//禁止IP
+			$ob_find=$this->find(1);
+			$ip_j=$ob_find->data;
+			$ip_a=json_decode($ip_j['forbidden_ip'],true);//添加IP
+			$ip_a[]=$ip_a;
+			$save['forbidden_ip']=json_encode($ip_a);
+			$save['site']=1;
+			$this->update($save);//添加IP
+		}
+		function up_site($info){
+			$domain=strip_tags($info['domain']);
+			$domain_string=preg_replace('/\s+/', ' ', $domain);
+			$domain_array=explode(" ", $domain_string);
+			$info['domain']=json_encode($domain_array);
+			$info['site']=1;
+			$this->update($info);
+
+		}
 	}

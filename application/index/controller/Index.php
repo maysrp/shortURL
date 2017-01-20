@@ -48,6 +48,8 @@ class Index extends Controller
             return json($rem);
 
         }else{
+            $site_obj=$site->find(1);
+            $this->assign("site",$site_obj);
         	return $this->fetch('index');
         	
         }
