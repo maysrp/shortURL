@@ -3,6 +3,8 @@ namespace app\index\controller;
 use think\Controller;
 use app\index\model\url as UrlModel;
 use app\index\model\site as SiteModel;
+
+
 use think\Request ;
 class Index extends Controller
 {
@@ -54,5 +56,5 @@ class Index extends Controller
         	
         }
     }
-
+           
 }

@@ -5,7 +5,8 @@
 	use app\index\model\site as SiteModel;
 	use app\index\model\admin as AdminModel;
 	use think\Session;
-	use think\Request ;
+	use think\Request;
+	use think\Db;
 	class Admin extends Controller{
 		function index(){
 			$request=Request::instance();//
@@ -68,9 +69,18 @@
 			}
 		}
 		function lister(){
-			$url=new UrlModel();
-			$listall=$url->select();//
-			//var_dump($listall);
+			$request=Request::instance();//
+			if(!$request->session('admin')){
+				$this->error("你还未登入","Admin/login");
+				return;
+			}
+			if($request->get('d')){
+				$lid=(int)$request->get('d');
+				Db::name('url')->delete($lid);//删除不提示
+			}
+			$listall=Db::name('url')->paginate(20);
+			$this->assign('listall',$listall);
+			return $this->fetch();
 		}
 
 
