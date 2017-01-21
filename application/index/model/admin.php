@@ -25,10 +25,10 @@
 			}
 			$salt=$this->salt();
 			$passwd=md5(md5($password).$salt);
-			$upadte['admin']=1;
-			$upadte['salt']=$salt;
-			$upadte['password']=$passwd;
-			$this->upadte($update);
+			$update['admin']=1;
+			$update['salt']=$salt;
+			$update['password']=$passwd;
+			$this->update($update);
 			return true;
 		}
 	}

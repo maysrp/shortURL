@@ -65,7 +65,9 @@
 			$admin=new AdminModel();
 			$re=$admin->change_passwd($old,$new);
 			if($re){//成功true
-
+				return json($re);
+			}else{
+				return json($re);
 			}
 		}
 		function lister(){
