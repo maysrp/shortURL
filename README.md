@@ -30,6 +30,14 @@ PHP>5.4
 
 
 ## 后台
+
+
+后台地址:
+
+http://你的域名/index.php/index/admin/
+
+
+
 可以选择屏蔽域名 或者插入广告代码：
 
 [![install_h.png](http://bilibara.com/images/2017/01/21/install_h.png)](http://bilibara.com/image/aadw)
@@ -45,3 +53,5 @@ PHP>5.4
 
 
 ![install_5.png](http://bilibara.com/images/2017/01/21/install_5.png)
+
+
