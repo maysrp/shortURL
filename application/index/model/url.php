@@ -9,6 +9,8 @@
 			$save['short']=$this->random_short($num);
 			$save['time']=time();
 			$save['ip']=$info['ip'];
+			$save['visitor']=$info['visitor'];
+			$save['click']=$info['click'];
 			$this->insert($save);
 			$re['status']=true;
 			$re['con']=$save['short'];

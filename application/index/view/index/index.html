@@ -28,11 +28,11 @@
 		var url=$("#orignial_url").val();
 		if(url){
 			$.post(
-				".",
+				"create",
 				{r:url},
 				function(data){
 					if(data.status){
-						$(".short_url").html("<h3><a href=\"?u="+data.con+"\">"+window.location.protocol+"//"+top.location.hostname+"?u="+data.con+"</a></h3>");
+						$(".short_url").html("<h3><a href=\""+data.con+"\">"+window.location.protocol+"//"+top.location.hostname+"/"+data.con+"</a></h3>");
 						$(".short_url").removeClass("bg-danger");
 						$(".short_url").addClass("bg-success");
 					}else{
