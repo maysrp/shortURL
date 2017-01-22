@@ -8,18 +8,10 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+// $Id$
 
-use think\Route;
-
-Route::rule('/index/admin/index','index/admin/index');
-Route::rule('/index/admin/login','index/admin/login');
-Route::rule('/index/admin/lister','index/admin/lister');
-Route::rule('/index/admin/change_p','index/admin/change_p');
-
-
-
-Route::rule('/','index/index/index');
-Route::rule('/create','index/index/create');
-Route::rule('/:u','index/index/jump');
-
-
+if (is_file($_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"])) {
+    return false;
+} else {
+    require __DIR__ . "/index.php";
+}
