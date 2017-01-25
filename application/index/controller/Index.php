@@ -3,8 +3,6 @@ namespace app\index\controller;
 use think\Controller;
 use app\index\model\url as UrlModel;
 use app\index\model\site as SiteModel;
-
-
 use think\Request ;
 class Index extends Controller
 {
@@ -56,5 +54,24 @@ class Index extends Controller
         	
         }
     }
-           
+	public function url($short )
+    	{
+		$site=new SiteModel;
+        		$url=new UrlModel;
+        		$request=Request::instance();
+        		$ip=$request->ip();
+        		$u=$short;
+        		if(strlen($u)>4){
+            			$info['short']=$u;
+            			$info['ip']=$ip;
+            			$re=$url->click($info);
+            			if($re['status']){
+                		$this->assign("url",$re['con']);
+                		$this->assign("site",$site->site);
+                		return $this->fetch("click");
+            		}else{
+                		$this->error($re['con']);
+            		}
+        }	
+    	}
 }
