@@ -10,7 +10,8 @@
 // +----------------------------------------------------------------------
 
 use think\Route;
-
+Route::rule('','index/index/index');
 Route::rule('index/admin/index','index/admin/index');
 Route::rule('index/admin/login','index/admin/login');
 Route::rule('index/admin/lister','index/admin/lister');
+Route::rule(':short','index/index/url');
