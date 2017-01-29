@@ -57,21 +57,27 @@ class Index extends Controller
 	public function url($short )
     	{
 		$site=new SiteModel;
-        		$url=new UrlModel;
-        		$request=Request::instance();
-        		$ip=$request->ip();
-        		$u=$short;
-        		if(strlen($u)>4){
-            			$info['short']=$u;
-            			$info['ip']=$ip;
-            			$re=$url->click($info);
-            			if($re['status']){
-                		$this->assign("url",$re['con']);
-                		$this->assign("site",$site->site);
-                		return $this->fetch("click");
-            		}else{
-                		$this->error($re['con']);
-            		}
-        }	
+        	$url=new UrlModel;
+        	$request=Request::instance();
+        	$ip=$request->ip();
+		if($site->start($ip)){ //如果IP被禁止则true;
+            		$this->error("你的IP".$ip."处于禁止名单之中，请联系管理员！");
+            		return;
+        	}
+        	$u=$short;
+        	if(strlen($u)>4){
+            		$info['short']=$u;
+            		$info['ip']=$ip;
+            		$re=$url->click($info);
+            		if($re['status']){
+                	$this->assign("url",$re['con']);
+                	$this->assign("site",$site->site);
+                	return $this->fetch("click");
+            	}else{
+                	$this->error($re['con']);
+            	}
+        	}else{
+			$this->error("啥都没有");
+		}	
     	}
 }
