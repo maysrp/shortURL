@@ -7,6 +7,8 @@ SQL
 
 TP5 
 
+APACHE [nginx   请参考thinkphp5 nginx]
+
 Web ROOT directory /public/
 
 website setting: /application/config.php
